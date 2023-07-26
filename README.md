@@ -1,1 +1,3 @@
-Book_Directory
+BookShare - Flaunt your reads and discover literary gems together!
+
+
