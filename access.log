@@ -1,0 +1,7 @@
+Fri, 08 Sep 2023 11:37:01 GMT, GET / 200 5.840
+Fri, 08 Sep 2023 11:37:02 GMT, GET /favicon.ico 404 4.017
+Fri, 08 Sep 2023 11:37:31 GMT, GET, /, 304, 4.490
+Fri, 08 Sep 2023 11:38:03 GMT  GET  /  304  6.388
+Fri, 08 Sep 2023 11:38:50 GMT  GET  /  304  4.686 ms
+Fri, 08 Sep 2023 11:38:57 GMT  GET  /  304  0.883 ms
+Fri, 08 Sep 2023 11:39:47 GMT - GET - / - 304 - 4.492 ms
