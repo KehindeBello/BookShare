@@ -1,0 +1,31 @@
+{
+  "name": "book_share",
+  "version": "1.0.0",
+  "description": "Flaunt and discover literary gems(TS)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KehindeBello/book_directory.git"
+  },
+  "author": "Kehinde Bello",
+  "license": "ISC",
+  "type":"module",
+  "bugs": {
+    "url": "https://github.com/KehindeBello/book_directory/issues"
+  },
+  "homepage": "https://github.com/KehindeBello/book_directory#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1246.0",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "morgan": "^1.10.0",
+    "serverless": "^3.33.0",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9"
+  }
+}
