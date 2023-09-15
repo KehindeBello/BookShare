@@ -1,7 +1,7 @@
 {
   "name": "book_share",
   "version": "1.0.0",
-  "description": "Flaunt and discover literary gems(TS)",
+  "description": "Flaunt and discover literary gems",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,7 @@
   },
   "author": "Kehinde Bello",
   "license": "ISC",
-  "type":"module",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/KehindeBello/book_directory/issues"
   },
