@@ -15,7 +15,7 @@ const bookSchema = new Schema({
         required: true
     },
     genre: {
-        type: String,
+        type: [String],
         required: true
     }
 
