@@ -22,4 +22,26 @@ export class BookController {
                 console.log(err);
             })
     }
+
+    get_book(req, res) {
+        const id = req.params.id
+        Book.findById(id)
+            .then((result) => {
+                res.send(result)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    delete_book(req,res) {
+        const id = req.params.id;
+        Book.findByIdAndDelete(id)
+            .then((result) => {
+                res.redirect('/books');
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 }
