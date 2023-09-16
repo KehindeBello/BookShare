@@ -2,7 +2,6 @@ import express from "express";
 import morgan from "morgan";
 import fs from "fs"
 import path from "path";
-import { Book } from "./models/Books.js";
 import mongoose from "mongoose";
 import { config } from "./config.js"
 import { Bookrouter } from "./routes/booksRoutes.js";
