@@ -3,7 +3,11 @@ import { Book } from "../models/Books.js"
 export class BookController {
 
     all_books(req, res) {
+        const page = req.query.page || 0
+        const bookPerPage = 3
         Book.find().sort({createdAt: "desc"})
+        .skip(page * bookPerPage)
+        .limit(bookPerPage)
         .then((result) => {
             res.send(result);
         })
