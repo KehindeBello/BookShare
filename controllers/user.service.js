@@ -1,6 +1,6 @@
 import * as bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-import { config } from "../config.js"
+import "dotenv/config.js"
 
 // handler for database errors
 export const handleErrors = (err) => {
@@ -29,7 +29,7 @@ export const hashPassword = async (data) => {
 
 // create jwt token
 export const createToken = async (data) => {
-    return jwt.sign({data}, config.JWT.secret, {
-        expiresIn: config.JWT.maxAge
+    return jwt.sign({data}, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_MAXAGE
     })
 }

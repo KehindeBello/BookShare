@@ -3,19 +3,20 @@ import morgan from "morgan";
 import fs from "fs"
 import path from "path";
 import mongoose from "mongoose";
-import { config } from "./config.js"
+// import { config } from "./config.js"
 import { Bookrouter } from "./routes/booksRoutes.js";
 import { UserRouter } from "./routes/usersRoutes.js";
 import cookieParser from "cookie-parser";
+import "dotenv/config.js"
 
 const root = "./"
 const app = express()
 
 // connect to db and start server
-await mongoose.connect(config.MONGO_URI,  { useNewUrlParser: true})
+await mongoose.connect(process.env.MONGO_URI,  { useNewUrlParser: true})
     .then((connection) => console.log("Connected to db"))
-    .then(() => app.listen(config.PORT))
-    .then(() => console.log(`Listening on http://localhost:${config.PORT}`))
+    .then(() => app.listen(process.env.PORT))
+    .then(() => console.log(`Listening on http://localhost:${process.env.PORT}`))
     .catch((error) => {console.log(`Error - ${error}`)})
 
 
