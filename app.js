@@ -5,16 +5,17 @@ import path from "path";
 import mongoose from "mongoose";
 import { config } from "./config.js"
 import { Bookrouter } from "./routes/booksRoutes.js";
+import { UserRouter } from "./routes/usersRoutes.js";
+import cookieParser from "cookie-parser";
 
-const port = 3300 | process.env.port;
 const root = "./"
 const app = express()
 
 // connect to db and start server
 await mongoose.connect(config.MONGO_URI,  { useNewUrlParser: true})
     .then((connection) => console.log("Connected to db"))
-    .then(() => app.listen(port))
-    .then(() => console.log(`Listening on http://localhost:${port}`))
+    .then(() => app.listen(config.PORT))
+    .then(() => console.log(`Listening on http://localhost:${config.PORT}`))
     .catch((error) => {console.log(`Error - ${error}`)})
 
 
@@ -24,9 +25,11 @@ app.use(morgan(":date - :method - :url - :status - :response-time ms", {stream: 
 
 // parser middleware
 app.use(express.json());
+app.use(cookieParser());
 
 //Book routes
 app.use('/books', Bookrouter);
+app.use('/', UserRouter); // User/auth routes
 
 // About Route
 app.get('/about', (req,res) => {
