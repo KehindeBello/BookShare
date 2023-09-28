@@ -24,7 +24,10 @@ export class UserController {
                 maxAge: 86400000,
                 httpOnly: true
             })
-            res.status(201).json({message: `User ${user.email} created!`})
+            return res.status(201).json({
+                message: "User created!",
+                data : user.email
+            });
         } catch (error) {
             console.log(error);
             const errors = handleErrors(error);
