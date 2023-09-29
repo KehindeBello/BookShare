@@ -33,3 +33,8 @@ export const createToken = async (data) => {
         expiresIn: process.env.JWT_MAXAGE
     })
 }
+
+// compare password
+export const comparePassword = async (password, hashedPassword) => {
+    return bcrypt.compare(password, hashedPassword);
+}
