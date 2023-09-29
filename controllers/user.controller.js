@@ -1,5 +1,5 @@
 import { User } from "../models/User.js"
-import { handleErrors, createToken } from "./user.service.js";
+import { handleErrors, createToken, comparePassword } from "./user.service.js";
 
 
 export class UserController {
@@ -36,10 +36,35 @@ export class UserController {
     }
 
     get_login(req,res){
-        res.status(200).send("Login Page")
+        res.status(200).json({message: "Login Page"});
     }
 
-    post_login(req,res){
-        res.status(201).send('Logged in')
+    async post_login(req,res){
+        const {email, password} = req.body;
+        const user = await User.findOne({email});
+        
+        if (user) {
+            const authorized = await comparePassword(password, user.password);
+            if (authorized) {
+                const token = await createToken(user._id);
+                res.cookie('jwt', token, {maxAge: 259200000, httpOnly:true});
+
+                return res.status(200).json({
+                    message: "Login Successful",
+                    status: true,
+                    data: user.email
+                })
+            }
+            return res.status(400).json({
+                message: "Incorrect password",
+                status: false,
+                data: null
+            })
+        }
+        res.status(400).json({
+            message: "User doesn't exist",
+            status: false,
+            data: null
+        })
     }
 }
