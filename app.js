@@ -5,6 +5,7 @@ import path from "path";
 import mongoose from "mongoose";
 import { Bookrouter } from "./routes/booksRoutes.js";
 import { UserRouter } from "./routes/usersRoutes.js";
+import { Collectionrouter } from "./routes/collectionsRoutes.js";
 import cookieParser from "cookie-parser";
 import "dotenv/config.js"
 
@@ -27,9 +28,10 @@ app.use(morgan(":date - :method - :url - :status - :response-time ms", {stream: 
 app.use(express.json());
 app.use(cookieParser());
 
-//Book routes
+//Book, Auth and Collection routes
 app.use('/books', Bookrouter);
-app.use('/', UserRouter); // User/auth routes
+app.use('/', UserRouter); 
+app.use('/collection', Collectionrouter) 
 
 // About Route
 app.get('/about', (req,res) => {
