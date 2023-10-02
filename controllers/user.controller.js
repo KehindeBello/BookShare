@@ -4,10 +4,6 @@ import { handleErrors, createToken, comparePassword } from "./user.service.js";
 
 export class UserController {
 
-    get_signup(req, res){
-        res.status(200).send("Signup Page")
-    }
-
     async post_signup(req,res){
         //destructure the request body
         let {email, password} = req.body;
@@ -21,7 +17,7 @@ export class UserController {
             
             // pass token into cookie
             res.cookie('jwt',token, {
-                maxAge: 86400000,
+                maxAge: process.env.JWT_MAXAGE,
                 httpOnly: true
             })
             return res.status(201).json({
@@ -35,10 +31,6 @@ export class UserController {
         }
     }
 
-    get_login(req,res){
-        res.status(200).json({message: "Login Page"});
-    }
-
     async post_login(req,res){
         const {email, password} = req.body;
         const user = await User.findOne({email});
@@ -48,7 +40,8 @@ export class UserController {
             if (authorized) {
                 const token = await createToken(user._id);
                 res.cookie('jwt', token, {maxAge: 259200000, httpOnly:true});
-
+                // req.session.userID = user._id;
+                // console.log(req.session);
                 return res.status(200).json({
                     message: "Login Successful",
                     status: true,
@@ -64,6 +57,16 @@ export class UserController {
         res.status(400).json({
             message: "User doesn't exist",
             status: false,
+            data: null
+        })
+    }
+
+    async logout(req, res){
+        // replace the jwt cookie
+        res.cookie("jwt", '', {maxAge: 1})
+        return res.status(200).json({
+            message: "Logout Successful",
+            status: true,
             data: null
         })
     }
