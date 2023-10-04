@@ -1,5 +1,4 @@
 import * as bcrypt from "bcrypt"
-import jwt from "jsonwebtoken"
 import "dotenv/config.js"
 
 // handler for database errors
@@ -27,25 +26,7 @@ export const hashPassword = async (data) => {
     return await bcrypt.hash(data, salt);
 }
 
-// create jwt token
-export const createToken = async (data) => {
-    return jwt.sign({data}, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_MAXAGE
-    })
-}
-
 // compare password
 export const comparePassword = async (password, hashedPassword) => {
     return bcrypt.compare(password, hashedPassword);
-}
-
-// verify jwt token
-export function verifyToken(token) {
-    return jwt.verify(token, process.env.JWT_SECRET)
-}
-
-// get id of logged in user
-export function loggedInUser(token) {
-    const decodedToken = verifyToken(token);
-    return decodedToken.data
 }
