@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken"
 // create jwt token
 export const createToken = async (data) => {
     return jwt.sign({data}, process.env.JWT_SECRET, {
