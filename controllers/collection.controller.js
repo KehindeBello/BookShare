@@ -1,3 +1,4 @@
+import { isValidObjectId } from "mongoose";
 import { Collection } from "../models/Collection.js";
 import { loggedInUser } from "./user.service.js";
 
@@ -44,6 +45,27 @@ export class CollectionController {
         } catch (error) {
             console.log(error);
             res.status(400).json({
+                message: error.message,
+                status: false,
+                data: null
+            })
+        }
+    }
+
+    async add_book_to_collection(req,res){
+        try{
+            const collection_id = req.params.id;
+            const { book_id } = req.body;
+            if (isValidObjectId(book_id)){
+                await Collection.updateOne({_id:collection_id},{$push: {books: book_id}})
+            }   
+            return res.status(201).json({
+                message: "Book added",
+                status: true,
+                data: null
+            })
+        } catch(error) {
+            return res.status(400).json({
                 message: error.message,
                 status: false,
                 data: null
