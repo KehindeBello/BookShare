@@ -5,7 +5,8 @@ import { requireAuth } from "../middlewares/authMiddleware.js";
 const router = Router();
 const collectionConroller = new CollectionController()
 
-router.post('/create', requireAuth, collectionConroller.create_collection)
+router.post('/', requireAuth, collectionConroller.create_collection)
 router.get('/', requireAuth, collectionConroller.get_collection);
+router.post('/:id', requireAuth, collectionConroller.add_book_to_collection);
 
 export const Collectionrouter = router;
