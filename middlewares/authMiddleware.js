@@ -1,5 +1,5 @@
 // Protected routes
-import { verifyToken } from "../controllers/user.service.js";
+import { verifyToken } from "../utils/jwt_utils.js";
 
 export const requireAuth = (req, res, next) => {
     const token = req.cookies.jwt;

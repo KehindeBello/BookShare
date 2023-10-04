@@ -1,6 +1,6 @@
 import { isValidObjectId } from "mongoose";
 import { Collection } from "../models/Collection.js";
-import { loggedInUser } from "./user.service.js";
+import { loggedInUser } from "../utils/jwt_utils.js"
 
 export class CollectionController {
 

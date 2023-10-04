@@ -1,6 +1,6 @@
 import { User } from "../models/User.js"
-import { handleErrors, createToken, comparePassword } from "./user.service.js";
-
+import { handleErrors, comparePassword } from "./user.service.js";
+import { createToken } from "../utils/jwt_utils.js";
 
 export class UserController {
 
