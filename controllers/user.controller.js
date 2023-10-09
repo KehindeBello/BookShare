@@ -39,7 +39,7 @@ export class UserController {
             const authorized = await comparePassword(password, user.password);
             if (authorized) {
                 const token = await createToken(user._id);
-                res.cookie('jwt', token, {maxAge: 259200000, httpOnly:true});
+                res.cookie('jwt', token, {maxAge: process.env.JWT_MAXAGE, httpOnly:true});
                 // req.session.userID = user._id;
                 // console.log(req.session);
                 return res.status(200).json({
