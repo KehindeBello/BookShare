@@ -1,5 +1,4 @@
 import mongoose, { SchemaType } from "mongoose";
-import { User } from "./User.js";
 const Schema = mongoose.Schema;
 
 const collectionSchema = new Schema({
