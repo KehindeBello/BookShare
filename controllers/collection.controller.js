@@ -19,9 +19,9 @@ export class CollectionController {
             const collection = new Collection(data)
             const newCollection = await collection.save()
             return res.status(201).json({
-                message: `Collection ${newCollection.name} created`,
+                message: `${newCollection.name} created`,
                 status: true,
-                data: "Books"
+                data: null
             })
         } catch (error) {
             return res.status(400).json({
@@ -72,4 +72,26 @@ export class CollectionController {
             })
         }
     }
+
+    async books_to_collection(req, res) {
+        try {
+            const collection_id = req.params.id;
+            const { book_id } = req.body;
+
+            await Collection.updateOne({_id:collection_id}, {$push: {books: {$each : book_id }}})
+            return res.status(201).json({
+                message: `Added to Collection`,
+                status: true,
+                data: null
+            })
+
+        } catch (error) {
+            return res.status(400).json({
+                message: error.message,
+                status: false,
+                data: null
+            })
+        }
+    }
+    
 }
