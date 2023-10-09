@@ -1,0 +1,984 @@
+{
+	"info": {
+		"_postman_id": "972a9c42-bd84-4e93-8e12-31f94569eb18",
+		"name": "Book Share",
+		"description": "# BOOK SHARE \n\n## Description\nThis BookShare collection provides a set of endpoints to interact with the BookShare webapp.\n\n## ENDPOINTS\n\n### AUTH\n- User Signup\n- User Login\n- User Logout\n\n### BOOKS\n- Add a Book\n- Get all Books\n- Get a Book\n- Delete a Book\n\n### COLLECTION\n- Create a Book Collection\n- Get all Book COllections\n- Add book(s) to Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "User Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user_example@gmail.com\",\n    \"password\": \"example\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						},
+						"description": "API Endpoint to register a user.\n\n> A succesful request will return HTTP 201 status."
+					},
+					"response": [
+						{
+							"name": "User Signup Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"user_example@gmail.com\",\n    \"password\": \"example\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNjUyMjcyNTk0ODY2ZmY3Yzk0NmE2Mzc0IiwiaWF0IjoxNjk2NzU2MzEzLCJleHAiOjE2OTY3NTcyMTN9.2YlbQJRcyzGgzIm-MbUTgXixIREj8GMvaRJlmp8LP3s; Max-Age=900; Path=/; Expires=Sun, 08 Oct 2023 09:26:53 GMT; HttpOnly"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-gzyB/Cf2MlnpH2SYGougN5EB7d0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Oct 2023 09:11:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User created!\",\n    \"data\": \"user_example@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "User Login ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user_example@gmail.com\",\n    \"password\": \"example\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "API endpoint to **Login** a user with the provided credentials\n> A successful request will return HTTP 200 status.\n\n> Request with Incorrect credentials will return HTTP 400 status."
+					},
+					"response": [
+						{
+							"name": "User Login Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"user_example@gmail.com\",\n    \"password\": \"example\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNjUyMjcyNTk0ODY2ZmY3Yzk0NmE2Mzc0IiwiaWF0IjoxNjk2NzU3MDQ0LCJleHAiOjE2OTY3NTc5NDR9.Rnt2PXmY6IkNxmQxVE1dLkAM_ZPesUjwuE8bZbOoYZ4; Max-Age=259200; Path=/; Expires=Wed, 11 Oct 2023 09:24:04 GMT; HttpOnly"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-DoQC5kWTQCDZGq6RC106mrEJz2c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Oct 2023 09:24:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login Successful\",\n    \"status\": true,\n    \"data\": \"user_example@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout"
+							]
+						},
+						"description": "API Endpoint to **Logout** a User\n\n> A successful requrest will return HTTP 200 status."
+					},
+					"response": [
+						{
+							"name": "Logout Exmple",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "jwt=; Max-Age=0; Path=/; Expires=Sun, 08 Oct 2023 09:31:31 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39-mrMvNXpGd8sIHYAoHNBevzxclYA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Oct 2023 09:31:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Logout Successful\",\n    \"status\": true,\n    \"data\": null\n}"
+						}
+					]
+				}
+			],
+			"description": "Contains all requests that deals with user authentication.\n\n### ENDPOINTS\n- User Signup\n- User Login\n- User Logout",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "BOOKS",
+			"item": [
+				{
+					"name": "Get books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/books?page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "API Endpoint to fetch all books with pagination support.  \n  \n**Query Parameters**\n\n`page`  (optional):  The page number to retrieve. Default is 1\n\n> Successful request will return HTTP 200 status with json array containing book objects."
+					},
+					"response": [
+						{
+							"name": "Get books Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/books?page=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"books"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1064"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"428-8R9EGZoRTTRWUwmYk8P99rOWB6k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Oct 2023 21:02:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Books fetched\",\n    \"status\": true,\n    \"data\": [\n        {\n            \"_id\": \"6505d6968f66563b9764cd8c\",\n            \"title\": \"Vowels under duress\",\n            \"author\": \"Jide Badmus\",\n            \"published_date\": \"2019-01-01T00:00:00.000Z\",\n            \"genre\": [\n                \"poetry\"\n            ],\n            \"createdAt\": \"2023-09-16T16:23:50.594Z\",\n            \"updatedAt\": \"2023-09-16T16:23:50.594Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6505c9998f66563b9764cd89\",\n            \"title\": \"Mrs Funnybones\",\n            \"author\": \"Twinkle Khana\",\n            \"published_date\": \"2000-01-01T00:00:00.000Z\",\n            \"genre\": [\n                \"prose\",\n                \"comedy\"\n            ],\n            \"createdAt\": \"2023-09-16T15:28:25.962Z\",\n            \"updatedAt\": \"2023-09-16T15:28:25.962Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6505770e5166ebcc7b0fc28f\",\n            \"title\": \"One Arranged Murder\",\n            \"author\": \"Chetan Bhagat\",\n            \"published_date\": \"2020-01-01T00:00:00.000Z\",\n            \"genre\": [\n                \"murder\",\n                \"prose\",\n                \"fiction\"\n            ],\n            \"createdAt\": \"2023-09-16T09:36:14.055Z\",\n            \"updatedAt\": \"2023-09-16T09:36:14.055Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"65056eaefb7f5a8f16eb8c65\",\n            \"title\": \"Yinka, Where is Your Husband?\",\n            \"author\": \"Lizzie Damilola Blackburn\",\n            \"published_date\": \"2022-01-01T00:00:00.000Z\",\n            \"genre\": [\n                \"love\",\n                \"family\",\n                \"african\"\n            ],\n            \"createdAt\": \"2023-09-16T09:00:30.486Z\",\n            \"updatedAt\": \"2023-09-16T09:00:30.486Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"The Little Coffee Shop of Kabul\",\n    \"author\": \"Deborah Rodriguez\",\n    \"published_date\": \"2011\",\n    \"genre\": [\"Fiction, Historical\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/books",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"books"
+							]
+						},
+						"description": "API Endopoint to add a new book.\n\n> Successful request will return a HTTP 201 status with an object showing information of the newly created book."
+					},
+					"response": [
+						{
+							"name": "Add book Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"The Little Coffee Shop of Kabul\",\n    \"author\": \"Deborah Rodriguez\",\n    \"published_date\": \"2011\",\n    \"genre\": [\"Fiction, Historical\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/books",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "314"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13a-SeGiBprnK6NqFuGP/K1bw4Ii04g\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Oct 2023 21:41:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book added!\",\n    \"status\": true,\n    \"data\": {\n        \"title\": \"The Little Coffee Shop of Kabul\",\n        \"author\": \"Deborah Rodriguez\",\n        \"published_date\": \"2011-01-01T00:00:00.000Z\",\n        \"genre\": [\n            \"Fiction, Historical\"\n        ],\n        \"_id\": \"652321f71bf1596854d0b557\",\n        \"createdAt\": \"2023-10-08T21:41:11.173Z\",\n        \"updatedAt\": \"2023-10-08T21:41:11.173Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Book by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/books/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"books",
+								":id"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "652321f71bf1596854d0b557"
+								}
+							]
+						},
+						"description": "API Endpint to get a particular book by Id.\n\n### Path Parameters\n`id` : Id of the book to be retrieved.\n\n> A successful request will return a HTTP 200 status with an object showing the information of the book retreived."
+					},
+					"response": [
+						{
+							"name": "Book by id Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/books/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"books",
+										":id"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "652321f71bf1596854d0b557"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "315"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13b-M+mEbWTL0LQTR120C9t7Q0/Vo38\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Oct 2023 21:47:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book fetched\",\n    \"status\": true,\n    \"data\": {\n        \"_id\": \"652321f71bf1596854d0b557\",\n        \"title\": \"The Little Coffee Shop of Kabul\",\n        \"author\": \"Deborah Rodriguez\",\n        \"published_date\": \"2011-01-01T00:00:00.000Z\",\n        \"genre\": [\n            \"Fiction, Historical\"\n        ],\n        \"createdAt\": \"2023-10-08T21:41:11.173Z\",\n        \"updatedAt\": \"2023-10-08T21:41:11.173Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete book by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/books/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "652321f71bf1596854d0b557"
+								}
+							]
+						},
+						"description": "API Endpoint to delete a particular book\n\n### Path Parameters\n`id` : Id of the book to be deleted.\n\n> A successful request will return a HTTP 200? status."
+					},
+					"response": [
+						{
+							"name": "Delete book by id Example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/books/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "652321f71bf1596854d0b557"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-rNaqQdXXJefwHRJIoGP8Iyz0o6o\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Oct 2023 21:48:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book deleted\",\n    \"status\": true,\n    \"data\": null\n}"
+						}
+					]
+				}
+			],
+			"description": "Contains request that deals with books\n\n### ENDPOINTS\n- Add a Book\n- Get all Books\n- Get a Book\n- Delete a Book",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "COLLECTION",
+			"item": [
+				{
+					"name": "Create Collection",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Inception\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/collection",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"collection"
+							]
+						},
+						"description": "API Endpoint to **Create** a collection for the Logged-In User.\n\n> A successful request will return a HTTP 201 status."
+					},
+					"response": [
+						{
+							"name": "Create Collection Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Sample Collection\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/collection",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"collection"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"41-l9uQJ8kYYwQi5/fsmBq1veACQQU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Oct 2023 22:03:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Sample Collection created\",\n    \"status\": true,\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Collection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/collection",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"collection"
+							]
+						},
+						"description": "API Endpoint to **Fetch** Collections of the Logged-In User.\n\n> A successful request will return HTTP 200 status."
+					},
+					"response": [
+						{
+							"name": "Get Collection Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/collection",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"collection"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "278"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"116-PPYETNGXCiuGSgoXbafoZkk8KpA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Oct 2023 22:31:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Collections fetched\",\n    \"status\": true,\n    \"data\": [\n        {\n            \"_id\": \"6523271b5023fdcb21533c0a\",\n            \"user_id\": \"652272594866ff7c946a6374\",\n            \"name\": \"Sample Collection\",\n            \"books\": [\n                \"652321f71bf1596854d0b557\"\n            ],\n            \"createdAt\": \"2023-10-08T22:03:07.588Z\",\n            \"updatedAt\": \"2023-10-08T22:30:21.351Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add book(s) to Collection",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": [\"652321f71bf1596854d0b557\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/collection/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"collection",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6523271b5023fdcb21533c0a"
+								}
+							]
+						},
+						"description": "API Endpoint to add book/books to the selected collection of the Logged-In User.  \n\n### Path Parameters\n`id` : Id of the Collection in which the book(books) is(are) to be added.\n\n> A successful request will return HTTP 201 status."
+					},
+					"response": [
+						{
+							"name": "Add book(s) to Collection Example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"book_id\": [\"652321f71bf1596854d0b557\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/collection/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"collection",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6523271b5023fdcb21533c0a"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-ptl0MMKiHmWfvGL206hOoq43tEg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Oct 2023 22:30:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Added to Collection\",\n    \"status\": true,\n    \"data\": null\n}"
+						}
+					]
+				}
+			],
+			"description": "Contains all request that deals with book collections\n\n### ENDPOINTS\n- Create a Book Collection\n- Get all Book Collections\n- Add book(s) to Collection",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:3300"
+		}
+	]
+}
