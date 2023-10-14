@@ -21,7 +21,7 @@ export class CollectionController {
             return res.status(201).json({
                 message: `${newCollection.name} created`,
                 status: true,
-                data: null
+                data: newCollection
             })
         } catch (error) {
             return res.status(400).json({
