@@ -36,12 +36,23 @@ export class CollectionController {
         try {
             const token = req.cookies.jwt;
             const user_id = loggedInUser(token)
+            const collection_id = req.params.id
+
+            if (collection_id) {
+                const collections = await Collection.find({_id: collection_id, user_id: user_id})
+                return res.status(200).json({
+                    message: "Collections fetched",
+                    status: true,
+                    data: collections
+                })
+            }
             const collections = await Collection.find({user_id:user_id}).sort({createdAt: "desc"})
             return res.status(200).json({
                 message: "Collections fetched",
                 status: true,
                 data: collections
             })
+    
         } catch (error) {
             console.log(error);
             res.status(400).json({
@@ -73,4 +84,21 @@ export class CollectionController {
         }
     }
     
+    async delete_collection(req, res) {
+        try {
+            const id = req.params.id;
+            await Collection.findByIdAndDelete(id);
+            return res.status(200).json({
+                message: "Collection Deleted",
+                status: true,
+                data: null
+            })
+        } catch (error) {
+            return res.status(400).json({
+                message: error.message,
+                status: false,
+                data: null
+            })
+        }
+    }
 }
