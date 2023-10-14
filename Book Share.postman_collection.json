@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "972a9c42-bd84-4e93-8e12-31f94569eb18",
 		"name": "Book Share",
-		"description": "# BOOK SHARE \n\n## Description\nThis BookShare collection provides a set of endpoints to interact with the BookShare webapp.\n\n## ENDPOINTS\n\n### AUTH\n- User Signup\n- User Login\n- User Logout\n\n### BOOKS\n- Add a Book\n- Get all Books\n- Get a Book\n- Delete a Book\n\n### COLLECTION\n- Create a Book Collection\n- Get all Book COllections\n- Add book(s) to Collection",
+		"description": "# BOOK SHARE \n\n## Description\nThis BookShare collection provides a set of endpoints to interact with the BookShare webapp.\n\n## PREREQUISITE\nBefore using this collection, make sure you have your Database setup.\n## ENDPOINTS\n\n### AUTH\n- User Signup\n- User Login\n- User Logout\n\n### BOOKS\n- Add a Book\n- Get all Books\n- Get a Book\n- Delete a Book\n\n### COLLECTION\n- Create a Book Collection\n- Get all Book COllections\n- Add book(s) to Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -678,7 +678,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Inception\"\n}",
+							"raw": "{\n    \"name\": \"Sample Collection\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -760,34 +760,48 @@
 					]
 				},
 				{
-					"name": "Get Collection",
+					"name": "Get Collection(s)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/collection",
+							"raw": "{{url}}/collection/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"collection"
+								"collection",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "652a77d1ebe8926344e5a846"
+								}
 							]
 						},
-						"description": "API Endpoint to **Fetch** Collections of the Logged-In User.\n\n> A successful request will return HTTP 200 status."
+						"description": "API Endpoint to **Fetch** Collection(s) of the Logged-In User.\n\n### Path Parameters\n`id` (optional): id of Collection to be retrieved. Endpoint returns all Collection belonging to the user if `id` is not given.\n\n> A successful request will return HTTP 200 status."
 					},
 					"response": [
 						{
-							"name": "Get Collection Example",
+							"name": "Get Collection Example(without id)",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/collection",
+									"raw": "{{url}}/collection/:id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"collection"
+										"collection",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
 									]
 								}
 							},
@@ -805,15 +819,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "278"
+									"value": "440"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"116-PPYETNGXCiuGSgoXbafoZkk8KpA\""
+									"value": "W/\"1b8-8NWWccPN4SOF+YdnTCodzN7tR7E\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 08 Oct 2023 22:31:28 GMT"
+									"value": "Sat, 14 Oct 2023 11:14:25 GMT"
 								},
 								{
 									"key": "Connection",
@@ -825,7 +839,65 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"Collections fetched\",\n    \"status\": true,\n    \"data\": [\n        {\n            \"_id\": \"6523271b5023fdcb21533c0a\",\n            \"user_id\": \"652272594866ff7c946a6374\",\n            \"name\": \"Sample Collection\",\n            \"books\": [\n                \"652321f71bf1596854d0b557\"\n            ],\n            \"createdAt\": \"2023-10-08T22:03:07.588Z\",\n            \"updatedAt\": \"2023-10-08T22:30:21.351Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+							"body": "{\n    \"message\": \"Collections fetched\",\n    \"status\": true,\n    \"data\": [\n        {\n            \"_id\": \"652a77d1ebe8926344e5a846\",\n            \"user_id\": \"652272594866ff7c946a6374\",\n            \"name\": \"Sample Collection\",\n            \"books\": [],\n            \"createdAt\": \"2023-10-14T11:13:21.988Z\",\n            \"updatedAt\": \"2023-10-14T11:13:21.988Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"652a6fecebe8926344e5a841\",\n            \"user_id\": \"652272594866ff7c946a6374\",\n            \"name\": \"Self-Help\",\n            \"books\": [],\n            \"createdAt\": \"2023-10-14T10:39:40.346Z\",\n            \"updatedAt\": \"2023-10-14T10:39:40.346Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get Collection Example(with id)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/collection/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"collection",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "652a77d1ebe8926344e5a846"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "252"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fc-4vareqrjXrCsW4KqDuDNSQ1gwgQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 Oct 2023 11:15:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Collections fetched\",\n    \"status\": true,\n    \"data\": [\n        {\n            \"_id\": \"652a77d1ebe8926344e5a846\",\n            \"user_id\": \"652272594866ff7c946a6374\",\n            \"name\": \"Sample Collection\",\n            \"books\": [],\n            \"createdAt\": \"2023-10-14T11:13:21.988Z\",\n            \"updatedAt\": \"2023-10-14T11:13:21.988Z\",\n            \"__v\": 0\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -930,6 +1002,31 @@
 							"body": "{\n    \"message\": \"Added to Collection\",\n    \"status\": true,\n    \"data\": null\n}"
 						}
 					]
+				},
+				{
+					"name": "Delete Collection",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/collection/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"collection",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "65240c5cd59d1bb21aebf686"
+								}
+							]
+						},
+						"description": "API Endpoint to **delete** an exsiting book collection for the Logged-In User\n\n> A successful request will return HTTP status 200."
+					},
+					"response": []
 				}
 			],
 			"description": "Contains all request that deals with book collections\n\n### ENDPOINTS\n- Create a Book Collection\n- Get all Book Collections\n- Add book(s) to Collection",
