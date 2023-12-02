@@ -16,7 +16,7 @@ BookShare is a platform for discovering and sharing books with other users. It e
 
 2. Change directory to project folder
 
-    `cd `
+    `cd BookShare`
 
 3. **Install** the required dependencies
 
