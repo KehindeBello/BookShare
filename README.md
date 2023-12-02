@@ -12,7 +12,7 @@ BookShare is a platform for discovering and sharing books with other users. It e
 
 1. **Clone** the repository
 
-    `git clone `
+    `git clone git@github.com:KehindeBello/BookShare.git`
 
 2. Change directory to project folder
 
