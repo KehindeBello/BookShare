@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "972a9c42-bd84-4e93-8e12-31f94569eb18",
+		"_postman_id": "78e49872-d5f8-43fb-bfdf-33ee510dfa5a",
 		"name": "Book Share",
-		"description": "# BOOK SHARE \n\n## Description\nThis BookShare collection provides a set of endpoints to interact with the BookShare webapp.\n\n## PREREQUISITE\nBefore using this collection, make sure you have your Database setup.\n## ENDPOINTS\n\n### AUTH\n- User Signup\n- User Login\n- User Logout\n\n### BOOKS\n- Add a Book\n- Get all Books\n- Get a Book\n- Delete a Book\n\n### COLLECTION\n- Create a Book Collection\n- Get all Book COllections\n- Add book(s) to Collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"description": "# BOOK SHARE\n\n## Description\n\nThis BookShare collection provides a set of endpoints to interact with the BookShare webapp.\n\n## PREREQUISITE\n\nBefore using this collection, make sure you have your Database setup.\n\n## ENDPOINTS\n\n### AUTH\n\n- User Signup\n    \n- UserName\n    \n- User Login\n    \n- User Logout\n    \n\n### BOOKS\n\n- Add a Book\n    \n- Get all Books\n    \n- Get a Book\n    \n- Delete a Book\n    \n\n### COLLECTION\n\n- Create a Book Collection\n    \n- Get all Book COllections\n    \n- Add book(s) to Collection\n    \n- Delete Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21491431"
 	},
 	"item": [
 		{
@@ -16,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"user_example@gmail.com\",\n    \"password\": \"example\"\n}",
+							"raw": "{\n    \"email\": \"kehinde@gmail.com\",\n    \"password\": \"omokehinde\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -50,10 +51,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/signup",
+									"raw": "http://localhost:3300/signup",
+									"protocol": "http",
 									"host": [
-										"{{url}}"
+										"localhost"
 									],
+									"port": "3300",
 									"path": [
 										"signup"
 									]
@@ -108,7 +111,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"user_example@gmail.com\",\n    \"password\": \"example\"\n}",
+							"raw": "{\n    \"email\": \"kehinde@gmail.com\",\n    \"password\": \"omokehinde\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -142,10 +145,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/login",
+									"raw": "http://localhost:3300/login",
+									"protocol": "http",
 									"host": [
-										"{{url}}"
+										"localhost"
 									],
+									"port": "3300",
 									"path": [
 										"login"
 									]
@@ -207,7 +212,7 @@
 								"logout"
 							]
 						},
-						"description": "API Endpoint to **Logout** a User\n\n> A successful requrest will return HTTP 200 status."
+						"description": "API Endpoint to **Logout** a User\n\n> A successful request will return HTTP 200 status."
 					},
 					"response": [
 						{
@@ -216,10 +221,12 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/logout",
+									"raw": "http://localhost:3300/logout",
+									"protocol": "http",
 									"host": [
-										"{{url}}"
+										"localhost"
 									],
+									"port": "3300",
 									"path": [
 										"logout"
 									]
@@ -264,6 +271,96 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"Logout Successful\",\n    \"status\": true,\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Username",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"omobello\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/username",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"username"
+							]
+						},
+						"description": "API endpoint to get preferred username from user after signup.\n\n> A successful request wil return HTTP 200 status"
+					},
+					"response": [
+						{
+							"name": "Username",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"novelnerd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3300/username",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3300",
+									"path": [
+										"username"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-MmEH5JKSVbLVSYgyD9riMApx+tc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 10 Dec 2023 10:29:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User name updated\"\n}"
 						}
 					]
 				}
@@ -322,10 +419,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/books?page=1",
+									"raw": "http://localhost:3300/books?page=1",
+									"protocol": "http",
 									"host": [
-										"{{url}}"
+										"localhost"
 									],
+									"port": "3300",
 									"path": [
 										"books"
 									],
@@ -416,10 +515,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/books",
+									"raw": "http://localhost:3300/books",
+									"protocol": "http",
 									"host": [
-										"{{url}}"
+										"localhost"
 									],
+									"port": "3300",
 									"path": [
 										"books"
 									]
@@ -500,10 +601,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/books/:id",
+									"raw": "http://localhost:3300/books/:id",
+									"protocol": "http",
 									"host": [
-										"{{url}}"
+										"localhost"
 									],
+									"port": "3300",
 									"path": [
 										"books",
 										":id"
@@ -591,10 +694,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/books/:id",
+									"raw": "http://localhost:3300/books/:id",
+									"protocol": "http",
 									"host": [
-										"{{url}}"
+										"localhost"
 									],
+									"port": "3300",
 									"path": [
 										"books",
 										":id"
@@ -712,10 +817,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/collection",
+									"raw": "http://localhost:3300/collection",
+									"protocol": "http",
 									"host": [
-										"{{url}}"
+										"localhost"
 									],
+									"port": "3300",
 									"path": [
 										"collection"
 									]
@@ -789,10 +896,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/collection/:id",
+									"raw": "http://localhost:3300/collection/:id",
+									"protocol": "http",
 									"host": [
-										"{{url}}"
+										"localhost"
 									],
+									"port": "3300",
 									"path": [
 										"collection",
 										":id"
@@ -949,10 +1058,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/collection/:id",
+									"raw": "http://localhost:3300/collection/:id",
+									"protocol": "http",
 									"host": [
-										"{{url}}"
+										"localhost"
 									],
+									"port": "3300",
 									"path": [
 										"collection",
 										":id"
@@ -1020,13 +1131,74 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "65240c5cd59d1bb21aebf686"
+									"value": "6575847653889467b4c00f98"
 								}
 							]
 						},
 						"description": "API Endpoint to **delete** an exsiting book collection for the Logged-In User\n\n> A successful request will return HTTP status 200."
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Delete Collection",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3300/collection/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3300",
+									"path": [
+										"collection",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6575847653889467b4c00f98"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-KkUzJ/LUbr0MYcZkODTBJncP19g\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 10 Dec 2023 09:27:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Collection Deleted\",\n    \"status\": true,\n    \"data\": null\n}"
+						}
+					]
 				}
 			],
 			"description": "Contains all request that deals with book collections\n\n### ENDPOINTS\n- Create a Book Collection\n- Get all Book Collections\n- Add book(s) to Collection",
