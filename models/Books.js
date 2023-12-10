@@ -17,6 +17,11 @@ const bookSchema = new Schema({
     genre: {
         type: [String],
         required: true
+    },
+    uploaded_by : {
+        type: String,
+        required: true,
+        index: true
     }
 
 }, {timestamps: true})
