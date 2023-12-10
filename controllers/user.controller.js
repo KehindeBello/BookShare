@@ -1,6 +1,6 @@
 import { User } from "../models/User.js"
 import { handleErrors, comparePassword } from "./user.service.js";
-import { createToken } from "../utils/jwt_utils.js";
+import { createToken, loggedInUser } from "../utils/jwt_utils.js";
 
 export class UserController {
 
@@ -25,9 +25,36 @@ export class UserController {
                 data : user.email
             });
         } catch (error) {
-            console.log(error);
+            console.log(error.message)
             const errors = handleErrors(error);
             res.status(400).json(errors);
+        }
+    }
+
+    async post_username (req,res) {
+        const {username} = req.body
+        const token = req.cookies.jwt;
+        const user_id = loggedInUser(token)
+        try {
+            // check if usernane exists (is unique)
+            const existingUserName = await User.findOne({username}, {password:0})
+            console.log(`Existing Username : ${existingUserName}`)
+            if (existingUserName) {
+                return res.status(400).json({"Error": "Username already exists!"})
+            }
+            
+            //update user data in db 
+            await User.updateOne({_id: user_id}, { $set: {username: username} })
+            
+            // save username to session
+            req.session.username = username;
+            console.log(`Session Username ${req.session.username}`);
+
+            return res.status(200).json({"message":"User name updated"});
+            
+        } catch(error) {
+            console.log(error)
+            return res.status(400).json(error.message);
         }
     }
 
@@ -38,10 +65,14 @@ export class UserController {
         if (user) {
             const authorized = await comparePassword(password, user.password);
             if (authorized) {
+                // create jwt token and assign to a cookie
                 const token = await createToken(user._id);
                 res.cookie('jwt', token, {maxAge: process.env.JWT_MAXAGE, httpOnly:true});
-                // req.session.userID = user._id;
-                // console.log(req.session);
+
+                // add username to session
+                req.session.username = user.username;
+                console.log("Logged in successfully!")
+                
                 return res.status(200).json({
                     message: "Login Successful",
                     status: true,
@@ -62,8 +93,10 @@ export class UserController {
     }
 
     async logout(req, res){
-        // replace the jwt cookie
-        res.cookie("jwt", '', {maxAge: 1})
+        // destroy cookies
+        res.cookie("jwt", '', {maxAge: 1});
+        res.cookie("connect.sid", '', {maxAge: 1});
+        // TODO : Figure out why req.session.destroy() is not removing connect.sid from client
         return res.status(200).json({
             message: "Logout Successful",
             status: true,
