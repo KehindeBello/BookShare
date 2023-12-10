@@ -7,8 +7,11 @@ export class BookController {
         const limit = 4
         const skip = (page - 1) * limit
 
+        const username = req.query.username;
+        const query = (req.query.username !== undefined) ? {uploaded_by:username} : {}
+
         try {
-            const books = await Book.find().sort({createdAt: "desc"}).skip(skip).limit(limit);
+            const books = await Book.find(query).sort({createdAt: "desc"}).skip(skip).limit(limit);
             return res.status(200).json({
                 message: "Books fetched",
                 status: true,
@@ -25,8 +28,15 @@ export class BookController {
     }
  
     async add_book(req, res) {
+        console.log(req.session.username);
         try {
-            const book = new Book(req.body);
+            console.log(req.body);
+            const uploaded_by = req.session.username
+
+            console.log(`Book uploaded by ${uploaded_by}`);
+            
+            const book = new Book({...req.body, uploaded_by});
+            
             const newBook = await book.save()
             return res.status(201).json({
                 message: "Book added!",
