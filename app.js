@@ -32,7 +32,7 @@ app.use(session({
     secret: "sessionsecret",
     saveUninitialized: true,
     resave: false,
-    cookie: {secure: true}
+    // cookie: {secure: true}
 }));
 
 //Book, Auth and Collection routes
