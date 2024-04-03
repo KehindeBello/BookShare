@@ -30,7 +30,8 @@
     "morgan": "^1.10.0",
     "serverless": "^3.33.0",
     "typescript": "^5.1.6",
-    "validator": "^13.11.0"
+    "validator": "^13.11.0",
+    "winston": "^3.11.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
