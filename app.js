@@ -26,13 +26,6 @@ app.use(morgan(":date - :method - :url - :status - :response-time ms", {stream: 
 
 // parser middleware
 app.use(express.json());
-// app.use(cookieParser());
-// app.use(session({
-//     secret: "sessionsecret",
-//     saveUninitialized: true,
-//     resave: false,
-//     // cookie: {secure: true}
-// }));
 
 //Book, Auth and Collection routes
 app.use('/books', Bookrouter);
