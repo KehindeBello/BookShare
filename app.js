@@ -3,12 +3,11 @@ import morgan from "morgan";
 import fs from "fs"
 import path from "path";
 import mongoose from "mongoose";
+import "dotenv/config.js"
 import { Bookrouter } from "./routes/booksRoutes.js";
 import { UserRouter } from "./routes/usersRoutes.js";
 import { Collectionrouter } from "./routes/collectionsRoutes.js";
-import cookieParser from "cookie-parser";
-import session from "express-session"
-import "dotenv/config.js"
+
 
 const root = "./"
 const app = express()
@@ -27,13 +26,13 @@ app.use(morgan(":date - :method - :url - :status - :response-time ms", {stream: 
 
 // parser middleware
 app.use(express.json());
-app.use(cookieParser());
-app.use(session({
-    secret: "sessionsecret",
-    saveUninitialized: true,
-    resave: false,
-    // cookie: {secure: true}
-}));
+// app.use(cookieParser());
+// app.use(session({
+//     secret: "sessionsecret",
+//     saveUninitialized: true,
+//     resave: false,
+//     // cookie: {secure: true}
+// }));
 
 //Book, Auth and Collection routes
 app.use('/books', Bookrouter);
